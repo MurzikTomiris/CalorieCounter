@@ -83,4 +83,6 @@ dependencies {
     ksp("androidx.room:room-compiler:$room_version")
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+
+    implementation("androidx.datastore:datastore-preferences-android:1.1.1")
 }

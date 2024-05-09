@@ -2,9 +2,6 @@ package com.example.caloriecounter.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.caloriecounter.ActivityLevel
-import com.example.caloriecounter.Gender
-import com.example.caloriecounter.Goal
 
 @Entity(tableName = "user")
 data class UserEntity (

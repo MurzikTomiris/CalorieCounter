@@ -17,4 +17,7 @@ interface UserDao {
 
     @Query("select * from user")
     fun getAllUsers(): Flow<List<UserEntity>>
+
+    @Query("select * from user WHERE id = :id")
+    fun getUserById (id: Int): UserEntity
 }
