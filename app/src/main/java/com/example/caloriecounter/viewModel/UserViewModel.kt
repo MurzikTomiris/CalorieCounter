@@ -2,6 +2,7 @@ package com.example.caloriecounter.viewModel
 
 import StoreUserId
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.datastore.core.DataStore
 import androidx.datastore.dataStore
@@ -32,6 +33,14 @@ class UserViewModel(val database: MainDb, private val dataStore: DataStore<Prefe
     var heightText = mutableStateOf("")
     var normText = mutableStateOf("")
     var userId: Int? = null
+
+    init {
+        viewModelScope.launch {
+            storeUserId.getId.collect { id ->
+                userId = id
+            }
+        }
+    }
 
     fun insertUser() = viewModelScope.launch {
         val userProfile = user?.copy(name = nameText.value,
