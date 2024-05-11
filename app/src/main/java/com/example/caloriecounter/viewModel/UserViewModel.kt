@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 
 
 class UserViewModel(val database: MainDb, private val dataStore: DataStore<Preferences>): ViewModel() {
-    //val userList = database.userDao.getAllUsers()
+    val userList = database.userDao.getAllUsers()
     private val storeUserId = StoreUserId(dataStore)
 
     val user : UserEntity? = null

@@ -1,5 +1,6 @@
 package com.example.caloriecounter
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -245,6 +246,8 @@ fun CreateUser(
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center
         )
+        Log.d("TAG: ", userViewModel.userList.toString())
+        Log.d("TAG: ", userViewModel.userId.toString())
     }
 
 }

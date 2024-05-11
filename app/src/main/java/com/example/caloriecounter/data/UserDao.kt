@@ -20,4 +20,7 @@ interface UserDao {
 
     @Query("select * from user WHERE id = :id")
     fun getUserById (id: Int): UserEntity
+
+    @Query("select norm from user WHERE id = :id")
+    fun getUserNormById (id: Int): Float
 }
