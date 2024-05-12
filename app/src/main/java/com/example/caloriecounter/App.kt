@@ -8,6 +8,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.example.caloriecounter.data.MainDb
 
 class App: Application() {
-    val dataStore: DataStore<Preferences> by preferencesDataStore(name = "user_preferences")
     val database by lazy{ MainDb.createDataBase(this)}
+    val dataStore: DataStore<Preferences> by preferencesDataStore(name = "user_preferences")
+
 }

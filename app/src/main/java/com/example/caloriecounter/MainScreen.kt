@@ -1,6 +1,7 @@
 package com.example.caloriecounter
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
@@ -36,6 +37,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -43,8 +46,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.caloriecounter.viewModel.MainViewModel
 import com.example.caloriecounter.viewModel.UserViewModel
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @RequiresApi(Build.VERSION_CODES.O)
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
@@ -53,12 +56,11 @@ fun MainScreen(
     val selectedDate = viewModel.selectedDate
 
     Scaffold(
+
         topBar = {
             TopAppBar(
                 title = {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         Text(text = selectedDate.toString())
-                    }
                 },
                 navigationIcon = {
                     IconButton(onClick = { viewModel.onPreviousDaySelected() }) {
@@ -105,8 +107,8 @@ fun MainScreen(
             val caloriesConsumed by viewModel.caloriesConsumed.collectAsState()
             val norm by viewModel.norm.collectAsState()
 
-            ProgressBlock(caloriesConsumed, norm)
-
+            //ProgressBlock(caloriesConsumed, norm)
+            ProgressBlock(1200f, 1600f)
             Spacer(modifier = Modifier.height(20.dp))
 
             /*LazyColumn(

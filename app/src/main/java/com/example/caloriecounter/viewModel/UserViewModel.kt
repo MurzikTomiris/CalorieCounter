@@ -16,6 +16,7 @@ import com.example.caloriecounter.App
 import com.example.caloriecounter.NormCalculation
 import com.example.caloriecounter.data.MainDb
 import com.example.caloriecounter.data.UserEntity
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
@@ -42,7 +43,7 @@ class UserViewModel(val database: MainDb, private val dataStore: DataStore<Prefe
         }
     }
 
-    fun insertUser() = viewModelScope.launch {
+    fun insertUser() = viewModelScope.launch (Dispatchers.IO) {
         val userProfile = user?.copy(name = nameText.value,
                                     gender = genderText.value,
                                     goal = goalText.value,
