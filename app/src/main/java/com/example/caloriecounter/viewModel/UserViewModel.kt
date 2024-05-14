@@ -16,6 +16,7 @@ import com.example.caloriecounter.App
 import com.example.caloriecounter.NormCalculation
 import com.example.caloriecounter.data.MainDb
 import com.example.caloriecounter.data.UserEntity
+import com.example.caloriecounter.data.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

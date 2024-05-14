@@ -17,13 +17,29 @@ abstract class MainDb: RoomDatabase() {
     abstract val productDao: ProductDao
     abstract val mealDao: MealDao
     abstract val dailyMealDao: DailyMealDao
-    companion object{
+    /*companion object{
         fun createDataBase(context: Context): MainDb{
             return Room.databaseBuilder(
                 context,
                 MainDb::class.java,
                 "caloriecounter.db"
             ).build()
+        }
+    }*/
+    companion object{
+        @Volatile
+        private var INSTANCE: MainDb? = null
+
+        fun createDataBase(context: Context): MainDb {
+            return INSTANCE ?:synchronized(this){
+                val instance: MainDb = Room.databaseBuilder(
+                    context = context.applicationContext,
+                    klass = MainDb::class.java,
+                    name = "caloriecounter.db"
+                ).build()
+                INSTANCE = instance
+                return instance
+            }
         }
     }
 }
